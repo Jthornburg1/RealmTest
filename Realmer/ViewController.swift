@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
+        self.alerts = self.realm.objects(LoggedAlert.self)
         tableView.reloadData()
     }
 
