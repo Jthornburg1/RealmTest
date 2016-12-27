@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var alertNames = [String]()
     var alerts: Results<LoggedAlert>!
     let realm = try! Realm()
+    var selectedIndex: Int?
+    var answers: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        alerts = realm.objects(LoggedAlert.self)
+        
+        
         tableView.reloadData()
     }
 
@@ -57,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let al = alerts {
-            return alerts.count
+            return al.count
         } else {
             return 0
         }
@@ -72,12 +75,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedIndex = indexPath.row
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "ShowResponses", sender: self)
     }
     
     // Segue callback function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let vc = segue.destination as! ResponsesVC
+        if let selIndex = selectedIndex {
+            vc.alert = alerts[selIndex]
+        }
     }
     
     func createLoggedAlert(title: String?, question: String?) {

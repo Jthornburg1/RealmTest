@@ -13,5 +13,6 @@ class Response: Object {
     
     dynamic var answer: String?
     dynamic var date: Date?
+    dynamic var uid: String?
     var alert: LoggedAlert?
 }
