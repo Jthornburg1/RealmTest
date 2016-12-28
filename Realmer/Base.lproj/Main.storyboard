@@ -111,6 +111,12 @@
                                 <action selector="addResponseTapped:" destination="SRW-OO-acn" id="N13-kZ-Q1a"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="rnk-Mr-2oQ"/>
+                        <barButtonItem title="Settings" id="ruC-K4-s2f">
+                            <connections>
+                                <action selector="goToSettings:" destination="SRW-OO-acn" id="Cao-Me-Odh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="IVu-Sx-Vg9"/>
                         <barButtonItem title="Save" id="OaX-G3-LUz">
                             <connections>
@@ -123,11 +129,120 @@
                         <outlet property="questionLabel" destination="x1f-1U-5Bg" id="TXv-9r-RD5"/>
                         <outlet property="tableView" destination="oKk-iV-dMU" id="8Pj-FC-4S5"/>
                         <outlet property="textField" destination="jMN-Sr-92S" id="LV8-M9-fbh"/>
+                        <segue destination="gaR-NR-W9l" kind="show" identifier="showSettings" id="n9E-0b-7Kg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xoi-ld-pyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1765.5999999999999" y="136.28185907046478"/>
+        </scene>
+        <!--SettingsVC-->
+        <scene sceneID="4VL-AS-a9Y">
+            <objects>
+                <viewController id="gaR-NR-W9l" customClass="SettingsVC" customModule="Realmer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V3i-Pb-45V"/>
+                        <viewControllerLayoutGuide type="bottom" id="uEX-eg-5dY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S2t-zH-QEg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="alertMode" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6uz-NN-Eb6">
+                                <rect key="frame" x="16" y="96" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fixedIntervalTime" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sc4-Wo-g7z">
+                                <rect key="frame" x="16" y="143" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="randomIntervalMax" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mz1-nK-ZQt">
+                                <rect key="frame" x="16" y="191" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="randomIntervalMin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pj-2d-4uQ">
+                                <rect key="frame" x="16" y="241" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="responseTime" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LVh-xd-RFX">
+                                <rect key="frame" x="16" y="289" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="userName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5jh-Fm-PcA">
+                                <rect key="frame" x="16" y="338" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w96-zW-3Pc">
+                                <rect key="frame" x="67" y="385" width="240" height="218"/>
+                                <color key="backgroundColor" red="1" green="0.71037451679999997" blue="0.12169775250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LVh-xd-RFX" firstAttribute="top" secondItem="5Pj-2d-4uQ" secondAttribute="bottom" constant="18" id="3hs-OE-PNB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sc4-Wo-g7z" secondAttribute="trailing" id="5x1-Oj-bKZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Pj-2d-4uQ" secondAttribute="trailing" id="Du6-L3-Sb1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5Pj-2d-4uQ" secondAttribute="leading" id="E8Y-UH-4UH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5jh-Fm-PcA" secondAttribute="leading" id="Emb-UQ-wi1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6uz-NN-Eb6" secondAttribute="leading" id="HUX-BI-9Zb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5jh-Fm-PcA" secondAttribute="trailing" id="RHC-8W-5qF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="LVh-xd-RFX" secondAttribute="leading" id="Tdm-nb-rsB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w96-zW-3Pc" secondAttribute="trailing" constant="52" id="ZcH-JP-jMe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mz1-nK-ZQt" secondAttribute="trailing" id="cN4-P8-yb6"/>
+                            <constraint firstItem="sc4-Wo-g7z" firstAttribute="top" secondItem="6uz-NN-Eb6" secondAttribute="bottom" constant="17" id="eRv-lo-iUQ"/>
+                            <constraint firstItem="6uz-NN-Eb6" firstAttribute="top" secondItem="V3i-Pb-45V" secondAttribute="bottom" constant="32" id="epx-9X-EiS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6uz-NN-Eb6" secondAttribute="trailing" id="flz-qx-cTq"/>
+                            <constraint firstItem="uEX-eg-5dY" firstAttribute="top" secondItem="w96-zW-3Pc" secondAttribute="bottom" constant="20" id="ncY-B6-QIj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="sc4-Wo-g7z" secondAttribute="leading" id="pdZ-j6-LSe"/>
+                            <constraint firstItem="w96-zW-3Pc" firstAttribute="leading" secondItem="S2t-zH-QEg" secondAttribute="leadingMargin" constant="51" id="r6S-zd-KU7"/>
+                            <constraint firstItem="w96-zW-3Pc" firstAttribute="top" secondItem="5jh-Fm-PcA" secondAttribute="bottom" constant="17" id="r9H-Xb-CeD"/>
+                            <constraint firstItem="mz1-nK-ZQt" firstAttribute="top" secondItem="sc4-Wo-g7z" secondAttribute="bottom" constant="18" id="rK9-3W-L93"/>
+                            <constraint firstItem="5Pj-2d-4uQ" firstAttribute="top" secondItem="mz1-nK-ZQt" secondAttribute="bottom" constant="20" id="sI4-oA-7bP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="mz1-nK-ZQt" secondAttribute="leading" id="vWk-8i-CNm"/>
+                            <constraint firstItem="5jh-Fm-PcA" firstAttribute="top" secondItem="LVh-xd-RFX" secondAttribute="bottom" constant="19" id="wVo-jl-7mJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LVh-xd-RFX" secondAttribute="trailing" id="yyF-yt-g1Q"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Submit" id="1Dj-Ku-Ns7">
+                            <connections>
+                                <action selector="submitTapped:" destination="gaR-NR-W9l" id="6o9-VB-Nes"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="eLc-bq-aXx"/>
+                        <barButtonItem title="Redo" id="2m1-Ip-aZr">
+                            <connections>
+                                <action selector="redoTapped:" destination="gaR-NR-W9l" id="lmo-Ak-kV0"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <connections>
+                        <outlet property="alertModeText" destination="6uz-NN-Eb6" id="36k-y6-NhL"/>
+                        <outlet property="fixedIntervalTimeText" destination="sc4-Wo-g7z" id="NUY-wp-0Lm"/>
+                        <outlet property="randomIntervalMax" destination="mz1-nK-ZQt" id="xGz-DH-Vm6"/>
+                        <outlet property="randomIntervalMin" destination="5Pj-2d-4uQ" id="BN2-R9-wrO"/>
+                        <outlet property="responseTimeText" destination="LVh-xd-RFX" id="ajh-5X-XE8"/>
+                        <outlet property="textView" destination="w96-zW-3Pc" id="fkd-xj-Dov"/>
+                        <outlet property="userNameText" destination="5jh-Fm-PcA" id="5Gb-H6-Uh0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IlS-kB-5vt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765.5999999999999" y="813.64317841079469"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fb0-7U-QLv">

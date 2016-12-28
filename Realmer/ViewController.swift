@@ -15,19 +15,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var alertNames = [String]()
     var alerts: Results<LoggedAlert>!
-    let realm = try! Realm()
+    var realm: Realm?
     var selectedIndex: Int?
     var answers: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        realm = try! Realm()
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.alerts = self.realm.objects(LoggedAlert.self)
+        self.alerts = self.realm!.objects(LoggedAlert.self)
         tableView.reloadData()
     }
 
@@ -43,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let textField2 = alert.textFields?[1]
             self.createLoggedAlert(title: textField1?.text!, question: textField2?.text!)
             
-            self.alerts = self.realm.objects(LoggedAlert.self)
+            self.alerts = self.realm!.objects(LoggedAlert.self)
             self.tableView.reloadData()
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -89,7 +91,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func createLoggedAlert(title: String?, question: String?) {
-        let realm = try! Realm()
         let loggedAlert = LoggedAlert()
         if let title = title {
             loggedAlert.title = title
@@ -99,8 +100,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         do {
             
-            try realm.write {
-                realm.add(loggedAlert)
+            try realm!.write {
+                realm!.add(loggedAlert)
             }
             
         } catch let error as NSError {

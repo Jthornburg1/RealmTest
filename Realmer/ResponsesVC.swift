@@ -25,6 +25,8 @@ class ResponsesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textField.delegate = self
+        
         setResponses()
         
         uid = NSUUID().uuidString
@@ -110,6 +112,15 @@ class ResponsesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         alert.addAction(editAction)
         alert.addAction(deleteAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToSettings(_ sender: Any) {
+        performSegue(withIdentifier: "showSettings", sender: self)
+    }
+    // TextField methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // TableView methods
